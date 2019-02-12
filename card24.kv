@@ -1,17 +1,8 @@
-#kivy 1.0
+#:kivy 1.0.9
 
-#:set src '/Users/abiyyuismunandar/Documents/Stima/24CardGame/Images/'
-<ShownCard@Button>:
-    text_size: self.size
-    font_size: '25sp'
-    markup: True
-
-<ShownImg@Image>:
-    source: src + 'green_back.png'
-    x: self.parent.x
-    y: self.parent.y
-    size: self.parent.size
-    allow_stretch: True
+<ShownCard@Image>:
+	allow_stretch: True
+	size: self.parent.size
 
 <InputCard@Button>:
     text_size: self.size
@@ -26,30 +17,30 @@
     allow_stretch: True
 
 <Card24>:
-   
     BoxLayout:
 
         orientation: 'vertical'
         padding: 20
 
         BoxLayout:
-          
-            orientation: 'horizontal'
+			orientation: 'horizontal'
             padding: 10
+			source_image: self.source_image
 
             ShownCard:
-                ShownImg
-
+                id: shown1
+				source: root.source_image
             ShownCard:
-                ShownImg
-
+                id: shown2
+				source: root.source_image
             ShownCard:
-                ShownImg
-
+                id: shown3
+				source: root.source_image
             ShownCard:
-                ShownImg
-
-	    BoxLayout:
+                id: shown4
+				source: root.source_image
+	    
+		BoxLayout:
 
 	        orientation: 'horizontal'
 	        padding: 20
@@ -58,69 +49,65 @@
 
 	            cols: 7
 	            padding: 5
-	            row_force_default: True
-	            col_force_default: True
 
-	            col_default_width: 105
-	            row_default_height: 147
 	            size_hint: 1,0.65
 
 	            InputCard:
 	                InpImg:
-	                    source: src + 'AS.png'
+	                    source: 'AS.png'
 	                
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '2S.png'
+	                    source: '2S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '3S.png'
+	                    source: '3S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '4S.png'
+	                    source: '4S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '5S.png'	
+	                    source: '5S.png'	
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '6S.png'
+	                    source: '6S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '7S.png'
+	                    source: '7S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '8S.png'
+	                    source: '8S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '9S.png'
+	                    source: '9S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + '10S.png'
+	                    source: '10S.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + 'JS.png'
+	                    source: 'JS.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + 'QS.png'
+	                    source: 'QS.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + 'KS.png'
+	                    source: 'KS.png'
 
 	            InputCard:
 	                InpImg:
-	                    source: src + 'green_back.png'
+	                    source: 'green_back.png'
 
 	        BoxLayout:
 
@@ -128,24 +115,23 @@
 	            padding: 5
 
 	            Label:
-	                text: 'Answer'
+					text: 'Answer'
+				Label:
+					id: answer_label
+					text: ''
 	            Label: 
-	                text: 'Point'
+					text: 'Point'
+				Label:
+					id: point_label
+					text: ''
 	            Button:
 	                text: 'Solve'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+					on_press: root.update()
+				Button:
+					id: play_button
+					text: 'Play'
+					on_press: root.startgame()
+				Button:
+					id: exit_button
+					text: 'Exit'
+					on_press: root.exit()
